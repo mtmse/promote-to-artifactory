@@ -1,0 +1,19 @@
+apply plugin: 'base'
+apply plugin: 'se.mtm.artifactory-rpm'
+
+buildscript {
+    repositories {
+        maven {
+            url "http://artifactory.mtm.se:8081/artifactory/libs-both"
+        }
+    }
+    dependencies {
+        classpath 'se.mtm.gradle:gradle-artifactory-rpm-plugin:1.0.23'
+    }
+}
+
+version System.properties['rpmPackageVersion']
+
+artifactoryRpm {
+	packageName = System.properties['rpmPackageName']
+}
